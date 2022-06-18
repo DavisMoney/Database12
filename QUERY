@@ -1,0 +1,21 @@
+--SELECT animal_bio.id, animal_bio.name, species, animal_element.name, animal_terrain.location from animal_bio
+--SELECT animal_bio.name, species, animal_element.name,  from animal_bio
+--join animal_element on animal_element.id = animal_bio.id
+--join animal_terrain on animal_terrain.id = animal_bio.id
+--WHERE animal_bio.name = 'phil' OR animal_element.name = 'electricity'
+--WHERE animal_element.name = 'water' OR animal_terrain.location = 'atlantic ocean'
+--ORDER by id ASC
+--ORDER by id DESC
+
+
+--SELECT animal_element.name, animal_abilities.name, animal_terrain.name from animal_element
+--join animal_terrain on animal_terrain.id = animal_element.id
+--join animal_abilities on animal_abilities.id = animal_element.id
+
+
+SELECT avg(power_lvl) as overallaverage, count(*) from animal_bio
+
+--SELECT name, avg(power_lvl) as overallaverage, count(*) from animal_bio group by name
+
+
+--SELECT species, avg(power_lvl) as overallaverage, count(*) from animal_bio group by species
