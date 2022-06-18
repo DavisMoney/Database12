@@ -1,0 +1,104 @@
+CREATE TABLE animal_bio
+(
+id int,
+name varchar,
+species varchar,
+power_lvl float
+);
+
+CREATE TABLE animal_terrain
+(
+id int,
+name varchar,
+location varchar
+);
+
+CREATE TABLE animal_element
+(
+id int, 
+name varchar
+);
+
+CREATE TABLE animal_abilities
+(
+id int,
+name varchar
+);
+
+CREATE TABLE element_ability
+(
+element_id int,
+ability_id int
+);
+
+CREATE TABLE class_type
+(
+id int,
+name varchar
+);
+
+INSERT INTO	animal_bio
+(id, name, species, power_lvl)
+VALUES
+(1, 'phil', 'dolphin', 81),
+(2, 'gary', 'monkey', 75),
+(3, 'tom', 'scorpion', 91),
+(4, 'pepe', 'blue jay', 99),
+(5, 'jerry', 'koala', 57),
+(6, 'Oli', 'eel', 94),
+(4, 'phil', 'hawk', 29),
+(6, 'harry', 'shark', 50),
+(3, 'bob', 'scorpion', 95),
+(3, 'tyler', 'scorpion', 87),
+(3, 'oliver', 'scorpion', 48),
+(3, 'terry', 'scorpion', 72),
+(3, 'declan', 'scorpion', 27),
+(3, 'aila', 'scorpion', 91),
+(4, 'jasper', 'hawk', 17),
+(4, 'liam', 'hawk', 58),
+(4, 'ethan', 'hawk', 35),
+(4, 'owen', 'hawk', 71),
+(6, 'ava', 'eel', 62),
+(6, 'rowan', 'eel', 39),
+(6, 'liam', 'eel', 87),
+(6, 'tyler', 'eel', 57),
+(2, 'james', 'monkey', 92),
+(2, 'logan', 'monkey', 64),
+(2, 'luca', 'monkey', 73),
+(1, 'river', 'dolphin', 27),
+(1, 'avery', 'dolphin', 70),
+(1, 'scarlett', 'dolphin', 13);
+
+INSERT INTO animal_abilities
+(id, name)
+VALUES
+(1, 'water blast'),
+(2, 'fireball'),
+(3, 'rock throw'),
+(4, 'tornado'),
+(5, 'energy blast'),
+(6, 'lighting bolt');
+
+INSERT INTO animal_terrain
+(id, name, location)
+VALUES
+(1, 'river', 'amazon rainforest'),
+(2, 'desert', 'the sahara'),
+(3, 'mountain', 'mount everest'),
+(4, 'island', 'skypie'),
+(5, 'rainforest', 'amazon rainforest'),
+(6, 'ocean', 'atlantic ocean');
+
+INSERT INTO animal_element
+(id, name)
+VALUES
+(1, 'water'),
+(2, 'fire'),
+(3, 'earth'),
+(4, 'wind'),
+(5, 'magic'),
+(6, 'electricity');
+
+
+
+
