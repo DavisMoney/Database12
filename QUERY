@@ -1,21 +1,54 @@
---SELECT animal_bio.id, animal_bio.name, species, animal_element.name, animal_terrain.location from animal_bio
---SELECT animal_bio.name, species, animal_element.name,  from animal_bio
---join animal_element on animal_element.id = animal_bio.id
---join animal_terrain on animal_terrain.id = animal_bio.id
---WHERE animal_bio.name = 'phil' OR animal_element.name = 'electricity'
---WHERE animal_element.name = 'water' OR animal_terrain.location = 'atlantic ocean'
---ORDER by id ASC
---ORDER by id DESC
+--Everything printed out (full chart)
+SELECT id, character_bio.name, character_bio.power_lvl, animal_element.element_name, animal_species.name, element_ability.name, animal_abilities.name, animal_terrain.name, animal_terrain.location
+FROM character_bio
+JOIN animal_species on animal_species.species_id = character_bio.species_id
+JOIN animal_element on animal_element.element_id = character_bio.element_id
+JOIN element_ability on element_ability.element_id = character_bio.element_id
+JOIN animal_abilities on animal_abilities.species_id = character_bio.species_id
+JOIN animal_terrain on animal_terrain.element_id = character_bio.element_id
+ORDER by id ASC
 
 
---SELECT animal_element.name, animal_abilities.name, animal_terrain.name from animal_element
---join animal_terrain on animal_terrain.id = animal_element.id
---join animal_abilities on animal_abilities.id = animal_element.id
+--Ranks elements by average power level highest to lowest
+SELECT element_name, avg(power_lvl) from character_bio
+JOIN animal_element on animal_element.element_id = character_bio.element_id
+GROUP BY element_name
+ORDER BY avg(power_lvl) DESC
 
 
-SELECT avg(power_lvl) as overallaverage, count(*) from animal_bio
+--Ranks species by average power level lowest to highest
+SELECT animal_species.name, avg(power_lvl) from character_bio
+JOIN animal_species on animal_species.species_id = character_bio.species_id
+GROUP by animal_species.name
+ORDER BY avg(power_lvl) ASC
 
---SELECT name, avg(power_lvl) as overallaverage, count(*) from animal_bio group by name
+
+--Used to find character with certain power levels and elements(can also add locations and more)
+SELECT character_bio.name, character_bio.power_lvl, animal_element.element_name, animal_species.name
+FROM character_bio
+JOIN animal_species on animal_species.species_id = character_bio.species_id
+JOIN animal_element on animal_element.element_id = character_bio.element_id
+WHERE power_lvl > 50 and power_lvl < 60 and element_name = 'wind'
+Order by power_lvl DESC
 
 
---SELECT species, avg(power_lvl) as overallaverage, count(*) from animal_bio group by species
+--Used to update a power level of a character
+UPDATE character_bio
+SET power_lvl = 72
+WHERE id = 5;
+SELECT character_bio.name, character_bio.power_lvl
+FROM character_bio
+WHERE character_bio.id = 5
+
+
+--Used to search for characters by character id
+SELECT character_bio.name, character_bio.power_lvl
+FROM character_bio
+WHERE character_bio.id = 20
+
+
+--Used to print every character in an element can also be used with species and locations if you change the names
+SELECT animal_element.element_name, character_bio.name
+FROM character_bio
+JOIN animal_element on animal_element.element_id = character_bio.element_id
+WHERE animal_element.element_name = 'wind'
