@@ -52,3 +52,18 @@ SELECT animal_element.element_name, character_bio.name
 FROM character_bio
 JOIN animal_element on animal_element.element_id = character_bio.element_id
 WHERE animal_element.element_name = 'wind'
+
+
+--Used to print any characters with either abilities
+SELECT character_bio.name, animal_abilities.name, element_ability.name
+from character_bio
+JOIN element_ability on element_ability.element_id = character_bio.element_id
+JOIN animal_abilities on animal_abilities.species_id = character_bio.species_id
+WHERE element_ability.name = 'water blast' OR animal_abilities.name = 'sting'
+
+
+--Used to print the location to any element
+SELECT animal_element.element_name, animal_terrain.name, animal_terrain.location
+from animal_element
+JOIN animal_terrain on animal_terrain.element_id = animal_element.element_id
+WHERE animal_element.element_name = 'water' or animal_element.element_name = 'earth'
